@@ -43,9 +43,9 @@ export default function compose(dataLoader, options = {}) {
         }
 
         return (
-          !shallowEqual(this.props, nextProps) ||
-          this.state.error !== nextState.error ||
-          !shallowEqual(this.state.data, nextState.data)
+          !shallowEqual(this.props, nextProps)
+          || this.state.error !== nextState.error
+          || !shallowEqual(this.state.data, nextState.data)
         );
       }
 
@@ -93,7 +93,7 @@ export default function compose(dataLoader, options = {}) {
 
         // We need to do this before subscribing again.
         this._unsubscribe();
-        this._stop = dataLoader(props, onData, env);
+        this._stop = dataLoader(props, onData, env, this);
       }
 
       _unsubscribe() {
@@ -103,7 +103,7 @@ export default function compose(dataLoader, options = {}) {
       }
 
       render() {
-        const props = this.props;
+        const { props } = this;
         const { data, error } = this.state;
 
         if (error) {
