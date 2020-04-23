@@ -29,7 +29,7 @@ export default function compose(dataLoader, options = {}) {
         this._mounted = true;
       }
 
-      componentWillReceiveProps(props) {
+      UNSAFE_componentWillReceiveProps(props) {
         this._subscribe(props);
       }
 
