@@ -98,8 +98,8 @@ function compose(dataLoader) {
           this._mounted = true;
         }
       }, {
-        key: 'componentWillReceiveProps',
-        value: function componentWillReceiveProps(props) {
+        key: 'UNSAFE_componentWillReceiveProps',
+        value: function UNSAFE_componentWillReceiveProps(props) {
           this._subscribe(props);
         }
       }, {
